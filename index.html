@@ -793,7 +793,7 @@ async function ai(messages,system){
     const r=await fetch('https://api.anthropic.com/v1/messages',{
       method:'POST',
       headers:{'Content-Type':'application/json','x-api-key':G.key,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
-      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1200,system:system||ANALYST,messages})
+      body:JSON.stringify({model:'claude-sonnet-5-5',max_tokens:1200,system:system||ANALYST,messages})
     });
     if(!r.ok){const e=await r.json().catch(()=>({}));return`⚠ ${e?.error?.message||'Error '+r.status}`;}
     const d=await r.json();
