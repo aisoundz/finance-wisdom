@@ -1,0 +1,21 @@
+# Finance Wisdom
+# https://aisoundz.github.io/finance-wisdom
+#
+# If you have found a security problem with this page, please write to the
+# address below. A plain description and a way to reproduce it is more useful
+# than a formal report.
+#
+# One thing worth knowing before you report it: this page calls the Anthropic
+# API directly from the browser, using a key the visitor pastes in themselves.
+# That key is kept in the visitor's own localStorage and is never sent
+# anywhere except to api.anthropic.com. No key is embedded in the page. A
+# scanner flagging "API call from client-side JavaScript" here is describing
+# the design rather than finding a leak.
+#
+# Please do not run automated scanners against the live page. Everything it
+# serves is a single static file, already public in the repository.
+
+Contact: mailto:aisoundz9@gmail.com
+Expires: 2027-09-01T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://aisoundz.github.io/finance-wisdom/.well-known/security.txt
