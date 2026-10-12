@@ -3,6 +3,31 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<!--
+  Content Security Policy, delivered as a meta tag because this site is on
+  GitHub Pages, which cannot set response headers at all.
+
+  What that costs, stated so nobody has to rediscover it: the spec requires a
+  meta-delivered policy to IGNORE frame-ancestors, so there is no clickjacking
+  protection here and no way to add one from this host. X-Frame-Options is
+  header-only too. Strict-Transport-Security and X-Content-Type-Options are
+  likewise header-only and are simply unavailable on Pages. Moving to Vercel,
+  or putting a CDN in front, is the only route to those three.
+
+  What this policy DOES buy: scripts and styles cannot be loaded from any
+  outside origin, connect-src pins network calls to this page's own API, an
+  injected <base> tag cannot reroute relative URLs, and object/embed is off.
+
+  'unsafe-inline' is present for both script and style because the entire
+  page is one inline <style> block and one inline <script>. Removing it means
+  moving both into files first.
+
+  connect-src must keep listing api.anthropic.com: the page calls the Messages
+  API directly with a key the VISITOR pastes in and which is kept in their own
+  localStorage (fw_key). No key is embedded here, and none should ever be.
+-->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://api.anthropic.com; form-action 'self'; base-uri 'self'; object-src 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Finance Wisdom</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
